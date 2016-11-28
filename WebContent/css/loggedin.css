@@ -1,0 +1,37 @@
+
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	background: linear-gradient(#777, #444);
+    width: 100%; 
+    font-size:1.2vw;
+}
+
+.menu li {
+	list-style: none
+	background:linear-gradient(#777, #444);	
+	text-align: center;
+	width: 15vw;;
+    float: left;
+    border-right: 1px solid #bbb;
+
+}
+
+.menu li:hover{
+		background:linear-gradient(#777, #000);	
+	
+}
+.menu li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 1vw 1.2vw;
+    text-decoration: none;
+}
+
+.menu li a:hover {
+		background: linear-gradient(#777, #000);
+}
+

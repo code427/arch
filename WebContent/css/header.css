@@ -1,0 +1,53 @@
+
+
+table#fbTable {
+	width:100%;
+}
+
+
+
+table {
+	width:100%;
+}
+
+table#fbTable input,td{
+	font-size:1vw;
+	
+}
+
+select {
+	font-size:0.8vw;
+}
+
+#fbTable td {
+	padding-right: 1vw;
+	text-align: left;
+
+}
+
+
+
+td input {
+	float: right;
+}
+input {
+	font-size:1vw;
+}
+
+button {
+	font-size:1vw;
+}
+body{
+	font-family: 'Open Sans', sans-serif;
+	margin: 0 auto; 
+	width: 80vw;
+	background: #f0f0ed; 
+}
+
+#selectSH{
+	margin-top:1vw;
+}
+
+#selectSH form select option {
+}
+
