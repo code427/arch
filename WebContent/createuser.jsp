@@ -44,8 +44,6 @@ function match() {
 <form action="/arch/Controller" onsubmit="return match()" method="post" >
 <% if (request.getAttribute("userId")==null) { %>
 <input type="hidden" name="action" value="docreateuser"/>
-<%} else { %>
-<input type="hidden" name="action" value="doupdateuser"/>
 <%} %>
 Username: <br><input type="text" name="username" <%if(request.getAttribute("userName")==null) { %> value="" <%} else { %> value="<%=request.getAttribute("userName") %>"  readonly<%} %>  maxlength="30"/>
 <br>
@@ -53,6 +51,9 @@ Password: <br><input type="text" name="password" value="" />
 <br>
 Verify Password: <br><input type="text" name="verifypassword" value="" />
 <br>
+
+Level: <br><input type="text" name="level" value="" />
+
 <input type="submit" value="Submit" />
 </form>
 </div>

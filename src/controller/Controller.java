@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -138,6 +136,33 @@ public class Controller extends HttpServlet {
 		else if (action.equals("newtype")){
 			page="/NewType.jsp";
 		}
+
+		else if (action.equals("docreateuser")){
+			
+			User createu=new User();
+			createu.setName(request.getParameter("username"));
+			createu.setPassword(request.getParameter("password"));
+			createu.setLevel(request.getParameter("level"));
+			createu.setConnection(((User) request.getSession().getAttribute("user")).getConnection());
+			try {
+				createu.createuser(createu);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			page="/user.jsp";
+		}
+		else if (action.equals("logout")) {
+			
+
+			((User) request.getSession().getAttribute("user")).logout();
+			request.getSession().removeAttribute("user");
+			request.getSession().invalidate();
+			System.out.println("donig logout");
+		page="/LoginMVCForm.jsp";
+
+		}
+
 		
 		request.getRequestDispatcher(page).forward(request, response);
 		

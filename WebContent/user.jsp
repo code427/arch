@@ -18,9 +18,7 @@
 <p/>
 
 
-
-
-<button type="button"  style="font-size:1vw;" id="createUserA" onclick="location.href = 'Controller?action=createuser';" >Create New User</button>
+<button type="button"  style="font-size:1vw;" id="createUserA" onclick="location.href = '/arch/createuser.jsp';" >Create New User</button>
 
 <table border=1 >
 
@@ -42,7 +40,7 @@
 <sql:query dataSource ="${ds}" sql="select * from arch.user" var="results" />
 <c:forEach var="user" items="${results.rows}" >
 	<tr>
-	<td><a style=" text-decoration: none;" href="/arch/Controller?action=detail&userid=${user.id}" > ${user.id}</a></td>
+	<td><a style=" text-decoration: none;" href="/arch/updateUser.jsp?userid=${user.id}" > ${user.id}</a></td>
 	
 	<td>${user.name}</td>
 	<td>${user.school}</td>
@@ -65,7 +63,7 @@
 function validate(form,id) {
 	
 	    if (confirm("Are you sure you want to delete this user?") == true) {
-	    	window.location.replace('/tfb/Controller?action=udelete&customerid='+id) }
+	    	window.location.replace('/arch/deleteUser.jsp?userid='+id) }
 }
 </script>
 </html>

@@ -6,6 +6,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet" >
@@ -46,8 +47,8 @@
 				<tr>
 					<th>Site ID</th>
 					<th>Site Name</th>
-					<th>Longitude</th>
-					<th>Latitude</th>
+					<th>Prof</th>
+					<th>Peso</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -64,8 +65,8 @@
 	
 	<td>${Context.name}</td>
 	
-					<td>123.12</td>
-					<td>112.42</td>
+					<td>${Context.prof}</td>
+					<td><fmt:formatNumber value="${Context.peso}" maxFractionDigits="0"/></td>
 	
 	
 	</tr>

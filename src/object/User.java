@@ -4,19 +4,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 import com.mysql.jdbc.Connection;
 
 import database.Encrypt;
 import database.MysqlConnection;
 
+
 public class User {
 	
 	String level="";	 //0 professor 1 student 2 other
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	String name = "";
 	String zip = "";
 	String telephone = "";
@@ -36,7 +40,7 @@ public class User {
 			stnt.setString(1, username);
 			ResultSet rs = stnt.executeQuery();
 			if (rs.next()) {
-
+				System.out.println("checking password: "+ Encrypt.hash(password)+"db pass "+rs.getString("password"));
 				if (rs.getString("password").equals(Encrypt.hash(password))) {
 					System.out.println("passed");
 					
@@ -82,6 +86,46 @@ public class User {
 		// conn null
 		return 3;
 
+	}
+	
+	public int createuser(User createu) throws SQLException {
+		String sql = "insert into arch.user (name,password,level) values(?,?,?)";
+		PreparedStatement stnt = null;
+		try {
+			stnt = this.getConnection().prepareStatement(sql);
+		} catch (SQLException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		try {
+			stnt.setString(1, createu.getUsername());
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			stnt.setString(2, Encrypt.hash(createu.getPassword()));
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		stnt.setString(3, createu.getLevel());
+	
+		System.out.println(stnt.toString());
+		try {
+			if (stnt.execute() == false) {
+				
+				return 0;
+			}
+		} catch (SQLException e) {
+			if (e.getErrorCode() == 1062) {
+				System.out.println("got duplicate key exception");
+
+				return 2;
+			}
+			e.printStackTrace();
+		}
+		return 1;
 	}
 
 	public String getLevel() {
@@ -162,5 +206,28 @@ public class User {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public void logout() {
+
+		
+		try {
+			this.connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// TODO Auto-generated method stub
+		
+	this.id=null;
+	this.address=null;
+	this.school=null;
+	this.name=null;
+	this.email=null;
+	this.level=null;
+	this.telephone=null;
+	this.zip=null;
+		// TODO Auto-generated method stub
+		
 	}
 }

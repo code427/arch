@@ -23,15 +23,16 @@
 	
 
 <table>	
-<thead> <tr><th>Form</th><th>Total</th><th>Percentage</th></thead>
+<thead> <tr><th>Form Id</th><th>Form</th><th>Total</th><th>Percentage</th></thead>
 
-<sql:query dataSource ="${ds}" sql="select contextid,formid,count(formid) as 'total' from formcontexttype where contextid = ${param[\"contextid\"]} group by contextid,formid 
+<sql:query dataSource ="${ds}" sql="select contextid,formid,count(formid) as 'total', form.name from formcontexttype left join arch.form on form.id = formcontexttype.formid where contextid = ${param[\"contextid\"]} group by contextid,formid 
 					order by contextid" var="results" />
 
 	
 			<c:forEach var="ContextForm" items="${results.rows}" >
 	<tr>
-	<td><a style=" text-decoration: none;" href="/arch/contextDetail.jsp" >${ContextForm.formid}</a></td>
+	<td>${ContextForm.formid}</td>
+	<td><a style=" text-decoration: none;" href="/arch/contextDetail.jsp" >${ContextForm.name}</a></td>
 	
 	<td>${ContextForm.total}</td>
 	
