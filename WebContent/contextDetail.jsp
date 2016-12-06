@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+
 <head>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
@@ -21,10 +23,14 @@
 
 	<jsp:include page="rootheader.jsp" />
 	
+<button type="button" onclick="report()">Report</button>
+<script>
+	
 
-<table>	
+</script>
+<table id="formTable">	
 <thead> <tr><th>Form Id</th><th>Form</th><th>Total</th><th>Percentage</th></thead>
-
+<tbody id="formTbody">
 <sql:query dataSource ="${ds}" sql="select contextid,formid,count(formid) as 'total', form.name from formcontexttype left join arch.form on form.id = formcontexttype.formid where contextid = ${param[\"contextid\"]} group by contextid,formid 
 					order by contextid" var="results" />
 
@@ -44,8 +50,13 @@
 			</c:forEach>
 		</tbody>
 					
-		</table>		
+		</table>	
+				<div id="pageNav" style="text-align: center;"></div>	
+		<div id="formChart">
+		</div>
 	
 </body>
-<script src="./js/page.js"></script>
+<script src="./js/report.js"></script>
+
+
 </html>

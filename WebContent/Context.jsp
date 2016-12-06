@@ -28,13 +28,12 @@
 
 
 		<div  id="filter">
-	<form style="float:left" id="searchFields" action="/arch/Controller" method="get">
 	 <input type="hidden" name="action" value="search" /> 
-		<input type="text" name="ctid" placeholder="Site Id" value="<%=request.getAttribute("ctid")==null?"":request.getAttribute("ctid") %>">
-		<input type="text" name="name" placeholder="Site Name" value="<%=request.getAttribute("stname")==null?"":request.getAttribute("stname") %>">  
-		<input type="submit" value="Search" />	
-				
-		</form>
+		<input type="text" name="ctid"  id="ctid" placeholder="Site Id" value="<%=request.getAttribute("ctid")==null?"":request.getAttribute("ctid") %>">
+		<input type="text" name="name" id="ctname" placeholder="Site Name" value="<%=request.getAttribute("stname")==null?"":request.getAttribute("stname") %>">  
+		
+				<button onclick="search()">Search</button>				
+		
 
 
 		<form  style="float:right;margin-top:1vw" action="/arch/Controller?action=newsite" method="post" >
@@ -80,5 +79,5 @@
 
 		<div id="pageNav" style="text-align: center;"></div>
 </body>
-<script src="./js/page.js"></script>
+<script src="./js/report.js"></script>
 </html>
