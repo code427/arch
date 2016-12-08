@@ -15,7 +15,9 @@
 
 <link href="./css/table.css" rel="stylesheet" >
 
+<script src="./js/report.js"></script>
 <script src="./js/page.js"></script>
+
 </head>
 <body>
 

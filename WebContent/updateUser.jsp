@@ -20,8 +20,8 @@
 <tr><td><strong>${user.rows[0].name}</strong></td><td></td></tr>
 
 <tr><td>ZIP: </td><td><input type="text" name ="zip" value="${user.rows[0].zip}"></td></tr>
-<tr><td>Telephone: </td><td><input type="text" name ="telephone" value="${user.rows[0].email}"></td></tr>
-<tr><td>Email: </td><td><input type="text" name ="email" value="${user.rows[0].telephone}"></td></tr>
+<tr><td>Telephone: </td><td><input type="text" name ="telephone" value="${user.rows[0].telephone}"></td></tr>
+<tr><td>Email: </td><td><input type="text" name ="email" value="${user.rows[0].email}"></td></tr>
 <tr><td>School: </td><td><input type="text" name ="school" value="${user.rows[0].school }"></td></tr>
 <tr><td>Address: </td><td><input type="text" name ="address" value="${user.rows[0].address }"></td></tr>
 </table>

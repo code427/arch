@@ -124,8 +124,16 @@ tbody:hover tr:hover td {
 	background-color: #e8e8e8;
 }
 
+ #formChart div{
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
 
-#formChart div {
+ #typeChart div{
   font: 10px sans-serif;
   background-color: steelblue;
   text-align: right;

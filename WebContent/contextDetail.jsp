@@ -19,17 +19,21 @@
 <body>
 <sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/arch" user="root" password="1@9)" />
 <sql:query dataSource ="${ds}" sql="select count(*) as 'total'from formcontexttype where contextid= ${param[\"contextid\"]}" var="total" />
+<sql:query dataSource ="${ds}" sql="select count(*) as 'total'from formcontexttype where contextid= ${param[\"contextid\"]}" var="totalType" />
 
 
 	<jsp:include page="rootheader.jsp" />
 	
 <button type="button" onclick="report()">Report</button>
-<script>
-	
-
-</script>
-<table id="formTable">	
-<thead> <tr><th>Form Id</th><th>Form</th><th>Total</th><th>Percentage</th></thead>
+<div style="float:right">
+<button type="button" onclick="showType()">Type/Form</button>
+</div>
+<div id = "tableDiv">
+<table  id="formTable">	
+<thead> <tr><th>Form Id</th>
+			<th>Form Name</th>
+				<th>Total</th>
+					<th>Percentage</th></thead>
 <tbody id="formTbody">
 <sql:query dataSource ="${ds}" sql="select contextid,formid,count(formid) as 'total', form.name from formcontexttype left join arch.form on form.id = formcontexttype.formid where contextid = ${param[\"contextid\"]} group by contextid,formid 
 					order by contextid" var="results" />
@@ -51,12 +55,47 @@
 		</tbody>
 					
 		</table>	
-				<div id="pageNav" style="text-align: center;"></div>	
-		<div id="formChart">
+		
+		<table  id="typeTable">	
+<thead> <tr><th>Type Id</th>
+			<th>Type Name</th>
+				<th>Total</th>
+					<th>Percentage</th></thead>
+<tbody id="typeTbody">
+<sql:query dataSource ="${ds}" sql="select contextid,typeid,count(typeid) as 'totalType', type.name from formcontexttype left join arch.type on type.id = formcontexttype.typeid where contextid = ${param[\"contextid\"]} group by contextid,typeid 
+					order by contextid" var="results2" />
+
+	
+			<c:forEach var="ContextType" items="${results2.rows}" >
+	<tr>
+	<td>${ContextType.typeid}</td>
+	<td><a style=" text-decoration: none;" href="/arch/contextDetail.jsp" >${ContextType.name}</a></td>
+	
+	<td>${ContextType.total}</td>
+	
+				
+	<td><fmt:formatNumber value="${ContextType.totalType/totalType.rows[0].total*100}" maxFractionDigits="2"/></td>
+	
+	</tr>
+
+			</c:forEach>
+		</tbody>
+					
+		</table>	
+						<div id="pageNav" style="text-align: center;"></div>	
+		
 		</div>
+		<div id="chartDiv">
+		<div style="float:left;" id="formChart">
+		</div>
+		<div style="float:right;" id="typeChart">
+		</div>
+		</div>
+		
 	
 </body>
 <script src="./js/report.js"></script>
+<script src="./js/page.js"></script>
 
 
 </html>

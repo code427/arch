@@ -80,4 +80,6 @@
 		<div id="pageNav" style="text-align: center;"></div>
 </body>
 <script src="./js/report.js"></script>
+<script src="./js/page.js"></script>
+
 </html>
