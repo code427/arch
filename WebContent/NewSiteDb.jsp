@@ -14,20 +14,18 @@
 <body>
 
 
-   <c:if test="${empty param.name}">
-            <c:redirect url="insert.jsp" >
-                <c:param name="errMsg" value="Please Enter Product and Quantity" />
-            </c:redirect>
- 
-        </c:if>
+
+ <%System.out.print("here"); %>
+   
         <sql:setDataSource var="ds" 
         driver="com.mysql.jdbc.Driver" 
         url="jdbc:mysql://localhost/arch" 
         user="root" password="1@9)" />
         
         <sql:update dataSource="${ds}" var = "count" >
-		 insert into arch.context (Unidad,Capa,Nivel,Prof,`Div`,Cuad,Rasgo,`Name`,BolsasDeManta,PaleoBot,Fito,SoilXRF,Peso,notes,Chapo,Obsidian_XRF,Obsidian_LAICPMS,CalADBC,`Phase`,UNIT10)
- 		values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        
+        insert into arch.context (unidad,capa,nivel,prof,`div`,cuad,rasgo,`name`,bolsasdemanta,paleobot,fito,soilxrf,peso,notes,chapo,obsidian_xrf,obsidian_laicpms,caladbc,`phase`,unit10) 
+        values  (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
 
  		
 		<sql:param value="${param.Unidad}" />

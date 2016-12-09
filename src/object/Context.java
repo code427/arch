@@ -96,11 +96,4 @@ public class Context {
 		// TODO Auto-generated method stub
 		return hmap;
 	}
-
-	private HashMap<String,String> getOne(String id) {
-		HashMap<String,String> hmap=new HashMap<String,String>();
-		
-		// TODO Auto-generated method stub
-		return hmap;
-	}
 }

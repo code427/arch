@@ -22,7 +22,7 @@
 <sql:query dataSource ="${ds}" sql="select count(*) as 'total'from formcontexttype where contextid= ${param[\"contextid\"]}" var="totalType" />
 
 
-	<jsp:include page="rootheader.jsp" />
+<jsp:include page="rootheader.jsp" />
 	
 <button type="button" onclick="report()">Report</button>
 <div style="float:right">
@@ -42,7 +42,7 @@
 			<c:forEach var="ContextForm" items="${results.rows}" >
 	<tr>
 	<td>${ContextForm.formid}</td>
-	<td><a style=" text-decoration: none;" href="/arch/contextDetail.jsp" >${ContextForm.name}</a></td>
+	<td><a href="javascript:showSth('${ContextForm.formid}')"  >${ContextForm.name}</a></td>
 	
 	<td>${ContextForm.total}</td>
 	
@@ -69,7 +69,7 @@
 			<c:forEach var="ContextType" items="${results2.rows}" >
 	<tr>
 	<td>${ContextType.typeid}</td>
-	<td><a style=" text-decoration: none;" href="/arch/contextDetail.jsp" >${ContextType.name}</a></td>
+	<td><a style=" text-decoration: none;"  >${ContextType.name}</a></td>
 	
 	<td>${ContextType.total}</td>
 	
@@ -87,8 +87,10 @@
 		</div>
 		<div id="chartDiv">
 		<div style="float:left;" id="formChart">
+		Form
 		</div>
 		<div style="float:right;" id="typeChart">
+		Type
 		</div>
 		</div>
 		

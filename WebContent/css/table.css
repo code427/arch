@@ -141,3 +141,6 @@ tbody:hover tr:hover td {
   margin: 1px;
   color: white;
 }
+a{
+	text-decoration:none;
+}

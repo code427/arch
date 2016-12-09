@@ -28,15 +28,16 @@
 
 
 		<div  id="filter">
-	 <input type="hidden" name="action" value="search" /> 
-		<input type="text" name="ctid"  id="ctid" placeholder="Site Id" value="<%=request.getAttribute("ctid")==null?"":request.getAttribute("ctid") %>">
-		<input type="text" name="name" id="ctname" placeholder="Site Name" value="<%=request.getAttribute("stname")==null?"":request.getAttribute("stname") %>">  
+		<form style="float:left;" action="/arch/Controller?action=site" method="get" >
+		<input type="hidden" name="action" value="site">
+		<input type="text" name="contextid"  id="ctid" placeholder="Site Id" value="<%=request.getAttribute("contextid")==null?"":request.getAttribute("contextid") %>">
+		<input type="text" name="contextname" id="ctname" placeholder="Site Name" value="<%=request.getAttribute("contextname")==null?"":request.getAttribute("contextname") %>">  
+				<input type="submit" value="search" />
 		
-				<button onclick="search()">Search</button>				
-		
+		</form>
 
 
-		<form  style="float:right;margin-top:1vw" action="/arch/Controller?action=newsite" method="post" >
+		<form  style="float:right;margin-top:ivw;" action="/arch/Controller?action=newsite" method="post" >
 		<input type="submit" value="New Site" />
 			</form>
 		</div>
@@ -55,14 +56,15 @@
 			
 			<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/arch" user="root" password="1@9)" />
 
-<sql:query dataSource ="${ds}" sql="select * from arch.context" var="results" />
+<%if(request.getParameter("contextid")==null||request.getParameter("contextid").equals("")){System.out.println("hello");%><sql:query dataSource ="${ds}" sql="select * from arch.context" var="results" />
+<%}else {%><sql:query dataSource ="${ds}" sql="select * from arch.context where id like '%${param.contextid}%' and name like '%${param.contextname}%'" var="results" /> <%} %>
 
 	
 			<c:forEach var="Context" items="${results.rows}" >
 	<tr>
-	<td><a style=" text-decoration: none;" href="/arch/contextDetail.jsp?contextid=${Context.id}" >${Context.id}</a></td>
+	<td>${Context.id}</td>
 	
-	<td>${Context.name}</td>
+	<td><a style=" text-decoration: none;" href="/arch/contextDetail.jsp?contextid=${Context.id}" >${Context.name}</a></td>
 	
 					<td>${Context.prof}</td>
 					<td><fmt:formatNumber value="${Context.peso}" maxFractionDigits="0"/></td>

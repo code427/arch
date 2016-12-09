@@ -15,7 +15,7 @@
 <body>
 <jsp:include page="rootheader.jsp" />
 
-<form action="NewSiteDb.jsp" method="post"">
+<form style="width:30vw;" action="NewSiteDb.jsp" method="post"">
 <table>
 <% for(String k:pgMap.keySet()){ %>
 <tr><td><%=k+":" %></td

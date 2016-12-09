@@ -13,7 +13,7 @@
 <jsp:include page="rootheader.jsp" />
 
 <form action="updateUserDb.jsp?userid=${param['userid']}" method="post">
-<table>
+<table style="width:40vw;">
 <sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/arch" user="root" password="1@9)" />
 <sql:query dataSource ="${ds}" sql="select * from arch.user where id= ${param[\"userid\"]}" var="user" />
 

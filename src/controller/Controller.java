@@ -74,8 +74,19 @@ public class Controller extends HttpServlet {
 		
 			
 		}
+		else if(action.equals("formPic")){
+			if(request.getParameter("formid")!=null){		
+				request.getRequestDispatcher("/formPic.jsp?formid="+request.getParameter("formid")).forward(request, response);
+			}
+			
+		}
 
-		
+		else if(action.equals("formSpread")){
+			if(request.getParameter("formid")!=null){		
+				request.getRequestDispatcher("/formSpread.jsp?formid="+request.getParameter("formid")).forward(request, response);
+			}
+			
+		}	
 		// TODO Auto-generated method stub
 	//	response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -130,7 +141,6 @@ public class Controller extends HttpServlet {
 		}
 		else if (action.equals("newsite")){
 			request.setAttribute("oneMap", Context.getOne((User)request.getSession().getAttribute("user")));
-			System.out.println("arch newsite");
 			page="/NewSite.jsp";
 		}
 		else if (action.equals("newtype")){

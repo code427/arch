@@ -6,8 +6,6 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans"
 	rel="stylesheet">
 <link href="./css/header.css" rel="stylesheet" >
-
-
 <%@ page import="object.Type"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -26,14 +24,6 @@
 	<jsp:include page="rootheader.jsp" />
 
 
-		<div  id="filter">
-	<form   style="float:left" id="searchFields" action="/arch/Controller" method="get">
-	 <input type="hidden" name="action" value="search" /> 
-		<input type="text" name="ctid" placeholder="Site Id" value="<%=request.getAttribute("ctid")==null?"":request.getAttribute("ctid") %>">
-		<input type="text" name="name" placeholder="Site Name" value="<%=request.getAttribute("stname")==null?"":request.getAttribute("stname") %>">  
-		<input type="submit" value="Search" />	
-		</form>
-		</div>
 				<form  style="float:right;margin-top:1vw" action="/arch/Controller?action=newtype" method="post" >
 		<input type="submit" value="New Site" />
 		</form>
@@ -54,7 +44,7 @@
 		<tbody>
 			<c:forEach var="type" items="${results.rows}" >
 	<tr>
-	<td><a style=" text-decoration: none;" href="/arch/Controller?action=detail&typeid=${Type.id}" > ${type.id}</a></td>
+	<td> ${type.id}</td>
 	
 	<td>${type.name}</td>
 	</tr>

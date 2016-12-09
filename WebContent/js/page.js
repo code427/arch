@@ -95,8 +95,10 @@ function drawChart(chart,tbody){
 	   for(i=0;i<formArray.length;i++){
 		 var newDiv=document.createElement("div");
 		 var textnode = document.createTextNode(formArray[i]); 
+		 var lgt = Formlist[i].getElementsByTagName("td")[3].innerHTML;
+		   
 		 newDiv.appendChild(textnode);
-		 newDiv.style.width=count[i]/list.length*80+"vw";
+		 newDiv.style.width=lgt+"vw";
 		 formChart.appendChild(newDiv);  
 	   }
 }
@@ -186,14 +188,29 @@ function report(){
 	}
 }
 
-function search(){
-	list = document.getElementsByTagName("Tbody")[0].getElementsByTagName("tr");
-	for(r = 0;list.length;r++){
-		if(list[r].getElementsByTagName("td")[0].getElementsByTagName("a")[0].innerHTML==document.getElementById("ctid").value){
-			
-			continue;
-		}
-		else list[r].style.display="none";;
-	}
-	
-}
+function showSth(sth){	
+	 window.open("/arch/Controller?action=formPic&formid="+sth,'targetWindow',
+            'toolbar=no,location=no,status=no,menubar=no,,scrollbars=yes,resizable=yes,width=400,height=400');
+	 
+	 }
+
+//function search(){
+//	displayPage(1);
+//
+//	list = document.getElementsByTagName("Tbody")[0].getElementsByTagName("tr");
+//	if(document.getElementById("ctid").value!=""||document.getElementById("ctname").value!=""){
+//		for(r = 0;list.length;r++){
+//			if(list[r].getElementsByTagName("td")[0].getElementsByTagName("a")[0].innerHTML.indexOf(document.getElementById("ctid").value)>-1
+//					||list[r].getElementsByTagName("td")[1].innerHTML==document.getElementById("ctname").value){
+//				
+//				continue;
+//			}
+//			else list[r].style.display="none";;
+//		}
+//	}
+//	else {
+//		displayPage(1);
+//
+//	}
+//	
+//}
